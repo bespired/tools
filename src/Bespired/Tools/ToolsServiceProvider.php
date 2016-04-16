@@ -11,9 +11,9 @@ namespace Bespired\Tools;
  * file that was distributed with this source code.
  */
 
-use Build\Foundation\ServiceProvider;
 use Bespired\Tools\Console\Commands\FontelloCommand;
 use Bespired\Tools\Console\Commands\RolloutCommand;
+use Illuminate\Support\ServiceProvider;
 
 /**
  * Class SelectableServiceProvider
@@ -53,7 +53,7 @@ class ToolsServiceProvider extends ServiceProvider
     /**
      * Register the package.
      */
-    public function registerPackage()
+    public function register()
     {
 
         $this->commands($this->commands);
