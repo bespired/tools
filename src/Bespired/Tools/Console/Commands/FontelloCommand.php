@@ -39,8 +39,8 @@ class FontelloCommand extends Command
 	public function handle()
 	{
 		$this->info('Hello Fontello.');
-		$this->download_path  = config('build.tools.download_path');
-		$this->resources_path = config('build.tools.resources_path');
+		$this->download_path  = config('tools.download_path');
+		$this->resources_path = config('tools.resources_path');
 
 		if (!count($this->fontellozips())){
 			$this->info('No fontello found in your download folder.');

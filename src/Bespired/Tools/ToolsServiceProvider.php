@@ -45,7 +45,6 @@ class ToolsServiceProvider extends ServiceProvider
         ], 'config');
     }
 
-
     /**
      * Register the package.
      */
