@@ -21,23 +21,8 @@ use Illuminate\Support\ServiceProvider;
  */
 class ToolsServiceProvider extends ServiceProvider
 {
-    /*
-    **
-     * Add the tools configuration files.
-     * @var array
-     */
-    protected $config = [
-        'build.tools' => __DIR__ . '/../../config/tools.php'
-    ];
-
-    /**
-     * The tools migrations.
-     * @var array
-     */
-    protected $migrations = [
-        __DIR__ . '/../../database/migrations'
-    ];
-
+   
+   
     /**
      * Register the commands.
      * @var array
@@ -48,6 +33,17 @@ class ToolsServiceProvider extends ServiceProvider
     ];
 
 
+    /**
+     * Perform post-registration booting of services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/../../config/tools.php' => config_path('tools.php')
+        ], 'config');
+    }
 
 
     /**
@@ -59,4 +55,5 @@ class ToolsServiceProvider extends ServiceProvider
         $this->commands($this->commands);
         
     }
+    
 }
