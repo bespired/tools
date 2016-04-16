@@ -73,11 +73,15 @@ class FontelloCommand extends Command
 	private function create_scss()
 	{
 		$src= $this->zip_path . '/css/' .  $this->fontname . '.css';
-		$dst= $this->resources_path . 'sass/' .  $this->fontname . '/components/fontello.scss';
+		$dst= $this->resources_path . 'sass/' .  $this->fontname . '/components/';
 
 		$cssfile = $this->embed() . $this->stripfontsrc(File::get($src));
 
-		File::put($dst,$cssfile);
+		if (!File::exists($dst)) {
+        	File::makeDirectory($dst, 0755, true);
+    	}
+
+		File::put($dst.'fontello.scss',$cssfile);
 
 		$this->info("saved: {$dst}.");
 
