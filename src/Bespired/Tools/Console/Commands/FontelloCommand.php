@@ -83,7 +83,7 @@ class FontelloCommand extends Command
 
 		File::put($dst.'fontello.scss',$cssfile);
 
-		$this->info("saved: {$dst}.");
+		$this->info("saved: {$dst}fontello.scss.");
 
 	}
 
@@ -112,14 +112,16 @@ class FontelloCommand extends Command
 	{
 
 		$src= $this->zip_path . '.zip';
-		$dst= config('build.tools.package_path').$this->fontname.'/src/resources/assets/fontello.zip';
-
-		if (File::exists(config('build.tools.package_path').$this->fontname))
+		$dst= config('tools.package_path').$this->fontname.'/src/resources/assets/font/fontello.zip';
+		if (File::exists(config('tools.package_path').$this->fontname))
 		{
-			File::copy($src, $dst);
+			if ( File::copy($src, $dst)){
+				$this->info("copied: {$src} => {$dst}.");
+			}else{
+				$this->info("failed: {$src} => {$dst}.");
+			}
 		}
 
-		$this->info("copied: {$src} => {$dst}.");
 	}
 
 
