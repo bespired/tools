@@ -19,7 +19,7 @@
 	"license": "MIT",
 	"require": {
 		"php": ">=5.5.0",
-		"laravel/framework": "v5.2.*"
+		"illuminate/support": "5.2.x"
 	},
 	"autoload": {
 		"psr-4": {
